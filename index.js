@@ -25,7 +25,7 @@ module.exports = co.wrap(function* (cli) {
 		const sure = yield prompt.confirm(`Are you sure to delete branch ${branch.cyan}? [N/y] `)
 		if (sure) {
 			try {
-				yield execa.shell(`git branch -d ${branch}`)
+				yield execa.shell(`git branch -D ${branch}`)
 				yield execa.shell(`git push ${cli.stream} :${branch}`)
 				console.log(`deleted!`.green)
 			} catch (e) {
