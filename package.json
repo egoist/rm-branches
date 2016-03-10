@@ -1,0 +1,42 @@
+{
+  "name": "rm-branches",
+  "version": "0.0.0",
+  "description": "An interactive cli tool to remove git branches.",
+  "license": "MIT",
+  "repository": "egoist/rm-branches",
+  "author": {
+    "name": "EGOIST",
+    "email": "0x142857@gmail.com",
+    "url": "github.com/egoist"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "xo"
+  },
+  "bin": "cli.js",
+  "files": [
+    "index.js",
+    "cli.js"
+  ],
+  "keywords": [
+    "git",
+    "branch",
+    "cli"
+  ],
+  "dependencies": {
+    "co": "^4.6.0",
+    "co-prompt": "^1.0.0",
+    "colorful": "^2.1.0",
+    "execa": "^0.2.2",
+    "minimist": "^1.2.0",
+    "multimatch": "^2.1.0"
+  },
+  "devDependencies": {
+    "xo": "^0.12.1"
+  },
+  "xo": {
+    "semicolon": false
+  }
+}
