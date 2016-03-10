@@ -21,23 +21,14 @@ module.exports = co.wrap(function* (cli) {
 		process.exit()
 	}
 
-	// git command options
-	let options = 'd'
-	if (cli.remote) {
-		options += 'r'
-	}
-
 	for (let branch of branches) {
 		const sure = yield prompt.confirm(`Are you sure to delete branch ${branch.cyan}? [N/y] `)
 		if (sure) {
 			let deleteBranch
 			try {
-				deleteBranch = yield execa.shell(`git branch -${options} ${branch}`)
-				if (deleteBranch.stderr) {
-					console.log(deleteBranch.stderr.red)
-				} else {
-					console.log(`deleted!`.green)
-				}
+				yield execa.shell(`git branch -d ${branch}`)
+				yield execa.shell(`git push ${cli.stream} -d ${branch}`)
+				console.log(`deleted!`.green)
 			} catch (e) {
 				console.log(e.message.red)
 			}

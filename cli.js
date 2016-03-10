@@ -19,7 +19,11 @@ const cli = minimist(process.argv.slice(2), {
 	alias: {
 		h: 'help',
 		v: 'version',
-		r: 'remote'
+		r: 'remote',
+		s: 'stream'
+	},
+	default: {
+		stream: 'origin'
 	}
 })
 
