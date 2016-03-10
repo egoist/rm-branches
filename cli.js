@@ -11,6 +11,7 @@ const help = `
     rm-branches [patterns]
 
     -r/--remote:     Remove remote branch as well
+	-s/--stream:     Set up-stream to delete remote branch
     -v/--version:    Print version
     -h/--help:       Print help
 `
