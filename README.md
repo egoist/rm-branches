@@ -2,6 +2,8 @@
 
 > An interactive cli tool to remove git branches.
 
+![preview](/media/rm.gif)
+
 ## Install
 
 ```bash
