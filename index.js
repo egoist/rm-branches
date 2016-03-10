@@ -30,12 +30,19 @@ module.exports = co.wrap(function* (cli) {
 	for (let branch of branches) {
 		const sure = yield prompt.confirm(`Are you sure to delete branch ${branch.cyan}? [N/y] `)
 		if (sure) {
-			const deleteBranch = yield execa.shell(`git branch -${options} ${branch}`)
-			if (deleteBranch.stderr) {
-				console.log(deleteBranch.stderr.red)
-			} else {
-				console.log(`deleted!`.green)
+			let deleteBranch
+			try {
+				deleteBranch = yield execa.shell(`git branch -${options} ${branch}`)
+				if (deleteBranch.stderr) {
+					console.log(deleteBranch.stderr.red)
+				} else {
+					console.log(`deleted!`.green)
+				}
+			} catch (e) {
+				console.log(e.message.red)
 			}
+		} else {
+			console.log(`skipped!`.yellow)
 		}
 	}
 	process.exit()
