@@ -30,6 +30,7 @@ $ rm-branches -h
 
     rm-branches [patterns]
 
+    -r/--remote:     Remove remote branch as well
     -v/--version:    Print version
     -h/--help:       Print help
 ```
