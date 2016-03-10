@@ -1,6 +1,6 @@
 {
   "name": "rm-branches",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "An interactive cli tool to remove git branches.",
   "license": "MIT",
   "repository": "egoist/rm-branches",
