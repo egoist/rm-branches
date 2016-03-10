@@ -8,13 +8,18 @@ module.exports = co.wrap(function* (cli) {
 	const gitBranches = yield execa.shell('git branch')
 	// no branches
 	if (!gitBranches.stdout || gitBranches.stderr) {
-		console.log(gitBranches.stderr || 'No branches could be removed!')
+		console.log(gitBranches.stderr || `No branches could be removed!`.red)
 		process.exit()
 	}
 	// get branches
 	let branches = gitBranches.stdout.split('\n').map(val => val.substr(2))
 	const patterns = cli._.length > 0 ? cli._ : ['**', '!master']
 	branches = match(branches, patterns)
+
+	if (branches.length === 0) {
+		console.log(`No matched branches!`.yellow)
+		process.exit()
+	}
 
 	// git command options
 	let options = 'd'
