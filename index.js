@@ -26,7 +26,7 @@ module.exports = co.wrap(function* (cli) {
 		if (sure) {
 			try {
 				yield execa.shell(`git branch -D ${branch}`)
-				if (cli.flags.remote) {
+				if (cli.remote) {
 					yield execa.shell(`git push ${cli.stream} :${branch}`)
 				}
 				console.log(`deleted!`.green)
